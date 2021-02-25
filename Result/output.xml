@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.9.0 on win32)" generated="20210225 14:38:25.788" rpa="false">
+<suite id="s1" name="NewsArticle" source="E:\test\kmp\Test\NewsArticle.robot">
+<kw name="Start Browser" library="commonFunction" type="setup">
+<doc>open browser by url</doc>
+<arguments>
+<arg>https://www.kompas.id/baca/opini/2021/01/14/krisis-lingkungan-dan-bencana-pandemi</arg>
+</arguments>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20210225 14:38:26.160" level="INFO">Opening browser 'chrome' to base url 'https://www.kompas.id/baca/opini/2021/01/14/krisis-lingkungan-dan-bencana-pandemi'.</msg>
+<status status="PASS" starttime="20210225 14:38:26.160" endtime="20210225 14:38:33.073"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210225 14:38:33.073" endtime="20210225 14:38:35.194"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:26.159" endtime="20210225 14:38:35.194"></status>
+</kw>
+<test id="s1-t1" name="Font Yang Digunakan Harus Georgia,Times New Roman,Times,serif">
+<kw name="Given Cek HTML Font Family Georgia,Times New Roman,Times,serif" library="Font">
+<kw name="Get CSS Attribute Value" library="Font">
+<arguments>
+<arg>locator=//p[contains(@class,'font-georgia text-center leading-loose js-excerpt')]</arg>
+<arg>attribute=font-family</arg>
+</arguments>
+<assign>
+<var>${html_font}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>document.evaluate("${locator}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue</arg>
+</arguments>
+<assign>
+<var>${element}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.199" level="INFO">${element} = document.evaluate("//p[contains(@class,'font-georgia text-center leading-loose js-excerpt')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue</msg>
+<status status="PASS" starttime="20210225 14:38:35.199" endtime="20210225 14:38:35.200"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>return window.getComputedStyle(${element},null).getPropertyValue('${attribute}');</arg>
+</arguments>
+<assign>
+<var>${attribute_value}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.200" level="INFO">Executing JavaScript:
+return window.getComputedStyle(document.evaluate("//p[contains(@class,'font-georgia text-center leading-loose js-excerpt')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue,null).getPropertyValue('font-family');
+Without any arguments.</msg>
+<msg timestamp="20210225 14:38:35.211" level="INFO">${attribute_value} = Georgia, "Times New Roman", Times, serif</msg>
+<status status="PASS" starttime="20210225 14:38:35.200" endtime="20210225 14:38:35.211"></status>
+</kw>
+<msg timestamp="20210225 14:38:35.212" level="INFO">${html_font} = Georgia, "Times New Roman", Times, serif</msg>
+<status status="PASS" starttime="20210225 14:38:35.197" endtime="20210225 14:38:35.212"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${html_font}</arg>
+<arg>Georgia, "Times New Roman", Times, serif</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:35.212" endtime="20210225 14:38:35.212"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:35.196" endtime="20210225 14:38:35.212"></status>
+</kw>
+<doc>Melakukan pengecekan font yang digunakan halaman html terdiri dari
+Georgia, times new roman, times, serif</doc>
+<status status="PASS" starttime="20210225 14:38:35.194" endtime="20210225 14:38:35.213" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Content Artikel Berada Ditengah">
+<kw name="Given Scroll Ke Judul" library="commonFunction">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//div[contains(@class,"mx-auto")][h1]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:35.224" endtime="20210225 14:38:35.257"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.276" level="INFO">${x} = 280</msg>
+<status status="PASS" starttime="20210225 14:38:35.257" endtime="20210225 14:38:35.277"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.295" level="INFO">${y} = 186</msg>
+<status status="PASS" starttime="20210225 14:38:35.277" endtime="20210225 14:38:35.295"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:38:35.296" level="INFO">Executing JavaScript:
+window.scrollTo(280, 186)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:38:35.295" endtime="20210225 14:38:35.313"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:35.223" endtime="20210225 14:38:35.313"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:35.222" endtime="20210225 14:38:35.314"></status>
+</kw>
+<kw name="And Cek Posisi Di Tengah" library="Center">
+<kw name="Get Window Size" library="SeleniumLibrary">
+<doc>Returns current window width and height as integers.</doc>
+<assign>
+<var>${window_width}</var>
+<var>${window_height}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.322" level="INFO">${window_width} = 1552</msg>
+<msg timestamp="20210225 14:38:35.322" level="INFO">${window_height} = 840</msg>
+<status status="PASS" starttime="20210225 14:38:35.317" endtime="20210225 14:38:35.322"></status>
+</kw>
+<kw name="Get Element Size" library="SeleniumLibrary">
+<doc>Returns width and height of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@class="content"]</arg>
+</arguments>
+<assign>
+<var>${pic_width}</var>
+<var>${pic_height}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.344" level="INFO">${pic_width} = 960</msg>
+<msg timestamp="20210225 14:38:35.344" level="INFO">${pic_height} = 625</msg>
+<status status="PASS" starttime="20210225 14:38:35.322" endtime="20210225 14:38:35.344"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[@class="content"]</arg>
+</arguments>
+<assign>
+<var>${first_x_position}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.358" level="INFO">${first_x_position} = 280</msg>
+<status status="PASS" starttime="20210225 14:38:35.344" endtime="20210225 14:38:35.358"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${pic_width}/2</arg>
+</arguments>
+<assign>
+<var>${half_pic_width}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.358" level="INFO">${half_pic_width} = 480.0</msg>
+<status status="PASS" starttime="20210225 14:38:35.358" endtime="20210225 14:38:35.358"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${first_x_position}+${half_pic_width}</arg>
+</arguments>
+<assign>
+<var>${half_pic_pos}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.359" level="INFO">${half_pic_pos} = 760.0</msg>
+<status status="PASS" starttime="20210225 14:38:35.359" endtime="20210225 14:38:35.359"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${window_width}/2</arg>
+</arguments>
+<assign>
+<var>${half_window_width}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.359" level="INFO">${half_window_width} = 776.0</msg>
+<status status="PASS" starttime="20210225 14:38:35.359" endtime="20210225 14:38:35.359"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${half_window_width}</arg>
+<arg>${half_pic_pos}</arg>
+<arg>Posisi Tidak Di Tengah Karena posisi tengah screen ${half_window_width} dan posisi tengah object ${half_pic_pos}</arg>
+</arguments>
+<msg timestamp="20210225 14:38:35.360" level="FAIL">Posisi Tidak Di Tengah Karena posisi tengah screen 776.0 dan posisi tengah object 760.0: 776.0 != 760.0</msg>
+<status status="FAIL" starttime="20210225 14:38:35.360" endtime="20210225 14:38:35.360"></status>
+</kw>
+<status status="FAIL" starttime="20210225 14:38:35.316" endtime="20210225 14:38:35.360"></status>
+</kw>
+<doc>Melakukan pengecekan artikel yang harus berada di tengah layar</doc>
+<status status="FAIL" starttime="20210225 14:38:35.214" endtime="20210225 14:38:35.361" critical="yes">Posisi Tidak Di Tengah Karena posisi tengah screen 776.0 dan posisi tengah object 760.0: 776.0 != 760.0</status>
+</test>
+<test id="s1-t3" name="Tombol Berlangganan Mengarah Ke Url">
+<kw name="Given Scroll Ke Tombol Berlangganan" library="Berlangganan">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//div[contains(@class,"lg:order-none")][2]//div[contains(@class,"mb-6")]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:35.365" endtime="20210225 14:38:35.388"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.403" level="INFO">${x} = 616</msg>
+<status status="PASS" starttime="20210225 14:38:35.389" endtime="20210225 14:38:35.403"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:38:35.415" level="INFO">${y} = 1451</msg>
+<status status="PASS" starttime="20210225 14:38:35.403" endtime="20210225 14:38:35.415"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:38:35.416" level="INFO">Executing JavaScript:
+window.scrollTo(616, 1451)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:38:35.416" endtime="20210225 14:38:35.433"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:35.365" endtime="20210225 14:38:35.434"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:35.364" endtime="20210225 14:38:35.434"></status>
+</kw>
+<kw name="And Klik Tombol Berlangganan" library="Berlangganan">
+<kw name="Wait And Click Element" library="commonFunction">
+<doc>Wait element and click</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"lg:order-none")][2]//a[contains(.,"BERLANGGANAN")]</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20210225 14:38:38.437" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210225 14:38:35.436" endtime="20210225 14:38:38.437"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${element}</arg>
+</arguments>
+<assign>
+<var>${is_exist}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:38.437" endtime="20210225 14:38:38.470"></status>
+</kw>
+<msg timestamp="20210225 14:38:38.470" level="INFO">${is_exist} = True</msg>
+<status status="PASS" starttime="20210225 14:38:38.437" endtime="20210225 14:38:38.470"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_exist}</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<msg timestamp="20210225 14:38:38.470" level="INFO">Clicking element 'xpath=//div[contains(@class,"lg:order-none")][2]//a[contains(.,"BERLANGGANAN")]'.</msg>
+<status status="PASS" starttime="20210225 14:38:38.470" endtime="20210225 14:38:44.507"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:38.470" endtime="20210225 14:38:44.507"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:35.436" endtime="20210225 14:38:44.508"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:35.435" endtime="20210225 14:38:44.508"></status>
+</kw>
+<kw name="And Cek URL Mengarah Ke &quot;https://gerai.kompas.id/belanja/harian-kompas/kompas-digital-premium&quot;" library="Berlangganan">
+<kw name="Get Location" library="SeleniumLibrary">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${location}</var>
+</assign>
+<msg timestamp="20210225 14:38:44.519" level="INFO">${location} = https://gerai.kompas.id/belanja/harian-kompas/kompas-digital-premium/?utm_source=kompasid&amp;utm_medium=produk2_paywall&amp;utm_campaign=konten_berbayar&amp;utm_content=https%3A%2F%2Fwww.kompas.id%2Fbaca%2Fopini...</msg>
+<status status="PASS" starttime="20210225 14:38:44.510" endtime="20210225 14:38:44.519"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${location}</arg>
+<arg>${URL}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:44.519" endtime="20210225 14:38:44.519"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:44.509" endtime="20210225 14:38:44.519"></status>
+</kw>
+<kw name="And Go Back" library="SeleniumLibrary">
+<doc>Simulates the user clicking the back button on their browser.</doc>
+<status status="PASS" starttime="20210225 14:38:44.520" endtime="20210225 14:38:44.927"></status>
+</kw>
+<doc>Melakukan pengecekan tombol berlangganan diklik mengarah ke
+https://gerai.kompas.id/belanja/harian-kompas/kompas-digital-premium</doc>
+<status status="PASS" starttime="20210225 14:38:35.363" endtime="20210225 14:38:44.928" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Tanggal Dan Waktu Menggunakan Format ISO">
+<kw name="Given Scroll Ke Judul" library="commonFunction">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//div[contains(@class,"mx-auto")][h1]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:44.935" endtime="20210225 14:38:45.012"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:38:45.083" level="INFO">${x} = 280</msg>
+<status status="PASS" starttime="20210225 14:38:45.012" endtime="20210225 14:38:45.084"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:38:45.121" level="INFO">${y} = 186</msg>
+<status status="PASS" starttime="20210225 14:38:45.084" endtime="20210225 14:38:45.121"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:38:45.122" level="INFO">Executing JavaScript:
+window.scrollTo(280, 186)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:38:45.122" endtime="20210225 14:38:45.127"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:44.934" endtime="20210225 14:38:45.127"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:44.933" endtime="20210225 14:38:45.127"></status>
+</kw>
+<kw name="And Ambil Waktu Artikel Dan Check Iso" library="FormatIso">
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex flex-col leading-normal md:flex-col")]//time[1]</arg>
+<arg>datetime</arg>
+</arguments>
+<assign>
+<var>${dates}</var>
+</assign>
+<msg timestamp="20210225 14:38:45.149" level="INFO">${dates} = 2021-01-14 13:00:50</msg>
+<status status="PASS" starttime="20210225 14:38:45.128" endtime="20210225 14:38:45.149"></status>
+</kw>
+<kw name="Check Iso 8601" library="CommonFunction">
+<doc>Keyword for check iso 8601</doc>
+<arguments>
+<arg>${dates}</arg>
+</arguments>
+<msg timestamp="20210225 14:38:45.152" level="FAIL">Datetime 2021-01-14 13:00:50 bukan berformat iso 8601</msg>
+<status status="FAIL" starttime="20210225 14:38:45.150" endtime="20210225 14:38:45.152"></status>
+</kw>
+<status status="FAIL" starttime="20210225 14:38:45.128" endtime="20210225 14:38:45.152"></status>
+</kw>
+<doc>Melakukan pengecekan tanggal dan waktu menggunakan format ISO</doc>
+<status status="FAIL" starttime="20210225 14:38:44.930" endtime="20210225 14:38:45.153" critical="yes">Datetime 2021-01-14 13:00:50 bukan berformat iso 8601</status>
+</test>
+<test id="s1-t5" name="Tombol teks Memunculkan Tampilan List Font Size">
+<kw name="Given Scroll Ke Judul" library="commonFunction">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//div[contains(@class,"mx-auto")][h1]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:45.157" endtime="20210225 14:38:45.194"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:38:45.219" level="INFO">${x} = 280</msg>
+<status status="PASS" starttime="20210225 14:38:45.195" endtime="20210225 14:38:45.219"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:38:45.230" level="INFO">${y} = 186</msg>
+<status status="PASS" starttime="20210225 14:38:45.219" endtime="20210225 14:38:45.230"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:38:45.230" level="INFO">Executing JavaScript:
+window.scrollTo(280, 186)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:38:45.230" endtime="20210225 14:38:45.233"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:45.156" endtime="20210225 14:38:45.233"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:45.156" endtime="20210225 14:38:45.233"></status>
+</kw>
+<kw name="And Klik Tombol Text" library="Teks">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"TEKS")]</arg>
+</arguments>
+<msg timestamp="20210225 14:38:45.234" level="INFO">Simulating Mouse Over on element 'xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"TEKS")]'.</msg>
+<status status="PASS" starttime="20210225 14:38:45.234" endtime="20210225 14:38:46.133"></status>
+</kw>
+<kw name="Wait And Click Element" library="commonFunction">
+<doc>Wait element and click</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"TEKS")]</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20210225 14:38:49.135" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210225 14:38:46.134" endtime="20210225 14:38:49.135"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${element}</arg>
+</arguments>
+<assign>
+<var>${is_exist}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:49.136" endtime="20210225 14:38:49.152"></status>
+</kw>
+<msg timestamp="20210225 14:38:49.152" level="INFO">${is_exist} = True</msg>
+<status status="PASS" starttime="20210225 14:38:49.135" endtime="20210225 14:38:49.152"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_exist}</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<msg timestamp="20210225 14:38:49.153" level="INFO">Clicking element 'xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"TEKS")]'.</msg>
+<status status="PASS" starttime="20210225 14:38:49.153" endtime="20210225 14:38:49.210"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:49.152" endtime="20210225 14:38:49.210"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:46.134" endtime="20210225 14:38:49.210"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:45.234" endtime="20210225 14:38:49.210"></status>
+</kw>
+<kw name="And Cek List Font Size Muncul Kecil, Sedang, Besar" library="Teks">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Kecil")]</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:49.211" endtime="20210225 14:38:49.233"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Sedang")]</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:49.233" endtime="20210225 14:38:49.258"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Besar")]</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:49.259" endtime="20210225 14:38:49.279"></status>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Kecil")]</arg>
+</arguments>
+<msg timestamp="20210225 14:38:49.297" level="INFO">Element 'xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Kecil")]' is displayed.</msg>
+<status status="PASS" starttime="20210225 14:38:49.279" endtime="20210225 14:38:49.297"></status>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Sedang")]</arg>
+</arguments>
+<msg timestamp="20210225 14:38:49.315" level="INFO">Element 'xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Sedang")]' is displayed.</msg>
+<status status="PASS" starttime="20210225 14:38:49.297" endtime="20210225 14:38:49.315"></status>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Besar")]</arg>
+</arguments>
+<msg timestamp="20210225 14:38:49.330" level="INFO">Element 'xpath=//div[contains(@class, "px-4 lg:px-0")]//p[contains(.,"Besar")]' is displayed.</msg>
+<status status="PASS" starttime="20210225 14:38:49.315" endtime="20210225 14:38:49.331"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:49.211" endtime="20210225 14:38:49.331"></status>
+</kw>
+<doc>Melakukan pengecekan tombol text jika di klik menampilkan list font size</doc>
+<status status="PASS" starttime="20210225 14:38:45.155" endtime="20210225 14:38:49.331" critical="yes"></status>
+</test>
+<test id="s1-t6" name="Tombol Share Facebook Akan Mengeluarkan Popup Share Facebook">
+<kw name="Given Scroll Ke Judul" library="commonFunction">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//div[contains(@class,"mx-auto")][h1]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:49.334" endtime="20210225 14:38:49.350"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:38:49.362" level="INFO">${x} = 280</msg>
+<status status="PASS" starttime="20210225 14:38:49.350" endtime="20210225 14:38:49.362"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:38:49.375" level="INFO">${y} = 186</msg>
+<status status="PASS" starttime="20210225 14:38:49.362" endtime="20210225 14:38:49.375"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:38:49.376" level="INFO">Executing JavaScript:
+window.scrollTo(280, 186)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:38:49.375" endtime="20210225 14:38:49.379"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:49.334" endtime="20210225 14:38:49.380"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:49.333" endtime="20210225 14:38:49.380"></status>
+</kw>
+<kw name="And Klik Tombol Share Facebook" library="Facebook">
+<kw name="Wait And Click Element" library="commonFunction">
+<doc>Wait element and click</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex justify-end items-center")][1]//a[contains(@href, "facebook")]</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20210225 14:38:52.382" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210225 14:38:49.381" endtime="20210225 14:38:52.382"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${element}</arg>
+</arguments>
+<assign>
+<var>${is_exist}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:52.384" endtime="20210225 14:38:52.411"></status>
+</kw>
+<msg timestamp="20210225 14:38:52.411" level="INFO">${is_exist} = True</msg>
+<status status="PASS" starttime="20210225 14:38:52.383" endtime="20210225 14:38:52.411"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_exist}</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<msg timestamp="20210225 14:38:52.411" level="INFO">Clicking element 'xpath=//div[contains(@class,"flex justify-end items-center")][1]//a[contains(@href, "facebook")]'.</msg>
+<status status="PASS" starttime="20210225 14:38:52.411" endtime="20210225 14:38:52.545"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:52.411" endtime="20210225 14:38:52.545"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:49.380" endtime="20210225 14:38:52.545"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:49.380" endtime="20210225 14:38:52.546"></status>
+</kw>
+<kw name="And Cek Popup Share Facebook Muncul" library="Facebook">
+<kw name="Get Latest Windows" library="commonFunction">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<assign>
+<var>@{windows}</var>
+</assign>
+<msg timestamp="20210225 14:38:52.561" level="INFO">@{windows} = [ CDwindow-21934A21EA5AACC1364E37DE84319272 | CDwindow-D620FC2D90C2CA43932A096102E0AD24 ]</msg>
+<status status="PASS" starttime="20210225 14:38:52.552" endtime="20210225 14:38:52.561"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${windows}</arg>
+</arguments>
+<assign>
+<var>${numWindows}</var>
+</assign>
+<msg timestamp="20210225 14:38:52.563" level="INFO">Length is 2</msg>
+<msg timestamp="20210225 14:38:52.565" level="INFO">${numWindows} = 2</msg>
+<status status="PASS" starttime="20210225 14:38:52.562" endtime="20210225 14:38:52.565"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${numWindows}-1</arg>
+</arguments>
+<assign>
+<var>${indexLast}</var>
+</assign>
+<msg timestamp="20210225 14:38:52.566" level="INFO">${indexLast} = 1</msg>
+<status status="PASS" starttime="20210225 14:38:52.566" endtime="20210225 14:38:52.567"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${numWindows} &gt; 1</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:52.567" endtime="20210225 14:38:52.567"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>DEPRECATED in SeleniumLibrary 4.0. , use `Switch Window` instead.</doc>
+<arguments>
+<arg>${windows}[${indexLast}]</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:52.568" endtime="20210225 14:38:52.644"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:52.551" endtime="20210225 14:38:52.644"></status>
+</kw>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<arguments>
+<arg>facebook.com</arg>
+</arguments>
+<msg timestamp="20210225 14:38:54.664" level="INFO">Current location contains 'facebook.com'.</msg>
+<status status="PASS" starttime="20210225 14:38:52.645" endtime="20210225 14:38:54.665"></status>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20210225 14:38:54.665" endtime="20210225 14:38:54.724"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>DEPRECATED in SeleniumLibrary 4.0. , use `Switch Window` instead.</doc>
+<arguments>
+<arg>MAIN</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:54.724" endtime="20210225 14:38:54.735"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:52.549" endtime="20210225 14:38:54.735"></status>
+</kw>
+<doc>Melakukan pengecekan tombol facebook akan keluar popup share facebook</doc>
+<status status="PASS" starttime="20210225 14:38:49.332" endtime="20210225 14:38:54.736" critical="yes"></status>
+</test>
+<test id="s1-t7" name="Tombol Share Twitter Akan Mengeluarkan Popup Share Twitter">
+<kw name="Given Scroll Ke Judul" library="commonFunction">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//div[contains(@class,"mx-auto")][h1]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:54.741" endtime="20210225 14:38:54.763"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:38:54.780" level="INFO">${x} = 280</msg>
+<status status="PASS" starttime="20210225 14:38:54.764" endtime="20210225 14:38:54.780"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:38:54.792" level="INFO">${y} = 186</msg>
+<status status="PASS" starttime="20210225 14:38:54.780" endtime="20210225 14:38:54.792"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:38:54.793" level="INFO">Executing JavaScript:
+window.scrollTo(280, 186)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:38:54.792" endtime="20210225 14:38:54.797"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:54.740" endtime="20210225 14:38:54.797"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:54.739" endtime="20210225 14:38:54.797"></status>
+</kw>
+<kw name="And Klik Tombol Share Twitter" library="Twitter">
+<kw name="Wait And Click Element" library="commonFunction">
+<doc>Wait element and click</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex justify-end items-center")][1]//a[contains(@href, "twitter")]</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20210225 14:38:57.798" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210225 14:38:54.798" endtime="20210225 14:38:57.798"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${element}</arg>
+</arguments>
+<assign>
+<var>${is_exist}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:57.800" endtime="20210225 14:38:57.848"></status>
+</kw>
+<msg timestamp="20210225 14:38:57.848" level="INFO">${is_exist} = True</msg>
+<status status="PASS" starttime="20210225 14:38:57.799" endtime="20210225 14:38:57.848"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_exist}</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<msg timestamp="20210225 14:38:57.849" level="INFO">Clicking element 'xpath=//div[contains(@class,"flex justify-end items-center")][1]//a[contains(@href, "twitter")]'.</msg>
+<status status="PASS" starttime="20210225 14:38:57.849" endtime="20210225 14:38:57.990"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:57.849" endtime="20210225 14:38:57.990"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:54.798" endtime="20210225 14:38:57.990"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:54.798" endtime="20210225 14:38:57.991"></status>
+</kw>
+<kw name="And Cek Popup Share Twitter Muncul" library="Twitter">
+<kw name="Get Latest Windows" library="commonFunction">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<assign>
+<var>@{windows}</var>
+</assign>
+<msg timestamp="20210225 14:38:58.007" level="INFO">@{windows} = [ CDwindow-21934A21EA5AACC1364E37DE84319272 | CDwindow-30B11BE78250CECE7EE4A5DC2905DA27 ]</msg>
+<status status="PASS" starttime="20210225 14:38:58.000" endtime="20210225 14:38:58.007"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${windows}</arg>
+</arguments>
+<assign>
+<var>${numWindows}</var>
+</assign>
+<msg timestamp="20210225 14:38:58.008" level="INFO">Length is 2</msg>
+<msg timestamp="20210225 14:38:58.008" level="INFO">${numWindows} = 2</msg>
+<status status="PASS" starttime="20210225 14:38:58.007" endtime="20210225 14:38:58.008"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${numWindows}-1</arg>
+</arguments>
+<assign>
+<var>${indexLast}</var>
+</assign>
+<msg timestamp="20210225 14:38:58.009" level="INFO">${indexLast} = 1</msg>
+<status status="PASS" starttime="20210225 14:38:58.008" endtime="20210225 14:38:58.009"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${numWindows} &gt; 1</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:58.009" endtime="20210225 14:38:58.011"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>DEPRECATED in SeleniumLibrary 4.0. , use `Switch Window` instead.</doc>
+<arguments>
+<arg>${windows}[${indexLast}]</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:38:58.011" endtime="20210225 14:38:58.073"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:57.998" endtime="20210225 14:38:58.073"></status>
+</kw>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<arguments>
+<arg>twitter.com</arg>
+</arguments>
+<msg timestamp="20210225 14:39:00.091" level="INFO">Current location contains 'twitter.com'.</msg>
+<status status="PASS" starttime="20210225 14:38:58.074" endtime="20210225 14:39:00.091"></status>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20210225 14:39:00.092" endtime="20210225 14:39:00.154"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>DEPRECATED in SeleniumLibrary 4.0. , use `Switch Window` instead.</doc>
+<arguments>
+<arg>MAIN</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:00.154" endtime="20210225 14:39:00.166"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:38:57.995" endtime="20210225 14:39:00.167"></status>
+</kw>
+<doc>Melakukan pengecekan tombol twitter akan keluar popup share twitter</doc>
+<status status="PASS" starttime="20210225 14:38:54.738" endtime="20210225 14:39:00.167" critical="yes"></status>
+</test>
+<test id="s1-t8" name="Tombol Share Whatsapp Akan Mengeluarkan Popup Share Whatsapp">
+<kw name="Given Scroll Ke Judul" library="commonFunction">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//div[contains(@class,"mx-auto")][h1]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:00.171" endtime="20210225 14:39:00.198"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:39:00.212" level="INFO">${x} = 280</msg>
+<status status="PASS" starttime="20210225 14:39:00.198" endtime="20210225 14:39:00.212"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:39:00.224" level="INFO">${y} = 186</msg>
+<status status="PASS" starttime="20210225 14:39:00.212" endtime="20210225 14:39:00.224"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:39:00.224" level="INFO">Executing JavaScript:
+window.scrollTo(280, 186)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:39:00.224" endtime="20210225 14:39:00.229"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:00.171" endtime="20210225 14:39:00.229"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:00.170" endtime="20210225 14:39:00.230"></status>
+</kw>
+<kw name="And Klik Tombol Share Whatsapp" library="Whatsapp">
+<kw name="Wait And Click Element" library="commonFunction">
+<doc>Wait element and click</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex justify-end items-center")][1]//a[contains(@href, "whatsapp")]</arg>
+</arguments>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20210225 14:39:03.232" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20210225 14:39:00.230" endtime="20210225 14:39:03.232"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${element}</arg>
+</arguments>
+<assign>
+<var>${is_exist}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:03.232" endtime="20210225 14:39:03.253"></status>
+</kw>
+<msg timestamp="20210225 14:39:03.253" level="INFO">${is_exist} = True</msg>
+<status status="PASS" starttime="20210225 14:39:03.232" endtime="20210225 14:39:03.253"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${is_exist}</arg>
+<arg>Click Element</arg>
+<arg>${element}</arg>
+</arguments>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${element}</arg>
+</arguments>
+<msg timestamp="20210225 14:39:03.254" level="INFO">Clicking element 'xpath=//div[contains(@class,"flex justify-end items-center")][1]//a[contains(@href, "whatsapp")]'.</msg>
+<status status="PASS" starttime="20210225 14:39:03.254" endtime="20210225 14:39:03.423"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:03.253" endtime="20210225 14:39:03.423"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:00.230" endtime="20210225 14:39:03.424"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:00.230" endtime="20210225 14:39:03.424"></status>
+</kw>
+<kw name="And Cek Popup Share Whatsapp Muncul" library="Whatsapp">
+<kw name="Get Latest Windows" library="commonFunction">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<assign>
+<var>@{windows}</var>
+</assign>
+<msg timestamp="20210225 14:39:03.446" level="INFO">@{windows} = [ CDwindow-21934A21EA5AACC1364E37DE84319272 | CDwindow-9BC639E2D1B94A3027987ED7F9ECCAAD ]</msg>
+<status status="PASS" starttime="20210225 14:39:03.435" endtime="20210225 14:39:03.447"></status>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<arguments>
+<arg>${windows}</arg>
+</arguments>
+<assign>
+<var>${numWindows}</var>
+</assign>
+<msg timestamp="20210225 14:39:03.448" level="INFO">Length is 2</msg>
+<msg timestamp="20210225 14:39:03.448" level="INFO">${numWindows} = 2</msg>
+<status status="PASS" starttime="20210225 14:39:03.447" endtime="20210225 14:39:03.448"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${numWindows}-1</arg>
+</arguments>
+<assign>
+<var>${indexLast}</var>
+</assign>
+<msg timestamp="20210225 14:39:03.450" level="INFO">${indexLast} = 1</msg>
+<status status="PASS" starttime="20210225 14:39:03.449" endtime="20210225 14:39:03.450"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${numWindows} &gt; 1</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:03.450" endtime="20210225 14:39:03.451"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>DEPRECATED in SeleniumLibrary 4.0. , use `Switch Window` instead.</doc>
+<arguments>
+<arg>${windows}[${indexLast}]</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:03.451" endtime="20210225 14:39:03.540"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:03.434" endtime="20210225 14:39:03.540"></status>
+</kw>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<arguments>
+<arg>whatsapp.com</arg>
+</arguments>
+<msg timestamp="20210225 14:39:05.569" level="INFO">Current location contains 'whatsapp.com'.</msg>
+<status status="PASS" starttime="20210225 14:39:03.540" endtime="20210225 14:39:05.569"></status>
+</kw>
+<kw name="Close Window" library="SeleniumLibrary">
+<doc>Closes currently opened and selected browser window/tab.</doc>
+<status status="PASS" starttime="20210225 14:39:05.569" endtime="20210225 14:39:05.631"></status>
+</kw>
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>DEPRECATED in SeleniumLibrary 4.0. , use `Switch Window` instead.</doc>
+<arguments>
+<arg>MAIN</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:05.631" endtime="20210225 14:39:05.641"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:03.433" endtime="20210225 14:39:05.641"></status>
+</kw>
+<doc>Melakukan pengecekan tombol whatsapp akan keluar popup share whatsapp</doc>
+<status status="PASS" starttime="20210225 14:39:00.169" endtime="20210225 14:39:05.643" critical="yes"></status>
+</test>
+<test id="s1-t9" name="Berita Terdiri Dari 5 Buah Artikel Terkait, Terpopuler, Terbaru, Dan Artikel Lainnya">
+<kw name="Given Scroll Ke Artikel Terkait" library="Artikel">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//span[contains(.,"Artikel Terkait")]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:05.648" endtime="20210225 14:39:05.981"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:39:05.995" level="INFO">${x} = 264</msg>
+<status status="PASS" starttime="20210225 14:39:05.981" endtime="20210225 14:39:05.995"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.008" level="INFO">${y} = 2908</msg>
+<status status="PASS" starttime="20210225 14:39:05.995" endtime="20210225 14:39:06.008"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:39:06.009" level="INFO">Executing JavaScript:
+window.scrollTo(264, 2908)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:39:06.008" endtime="20210225 14:39:06.045"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:05.648" endtime="20210225 14:39:06.046"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:05.647" endtime="20210225 14:39:06.046"></status>
+</kw>
+<kw name="And Cek Berita Terkait Terdiri Dari 5 Artikel" library="Artikel">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns the number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex flex-col px-4 w-full lg:w-2/3")][contains(.,"Artikel Terkait")]//div[contains(@class, "flex mb-4")]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.076" level="INFO">${count} = 6</msg>
+<status status="PASS" starttime="20210225 14:39:06.047" endtime="20210225 14:39:06.076"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${count} - ${1}</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.077" level="INFO">${count} = 5</msg>
+<status status="PASS" starttime="20210225 14:39:06.076" endtime="20210225 14:39:06.077"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${count} == 5</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:06.077" endtime="20210225 14:39:06.078"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.047" endtime="20210225 14:39:06.079"></status>
+</kw>
+<kw name="And Scroll Ke Artikel Terpopuler" library="Artikel">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//span[contains(.,"Terpopuler")]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:06.082" endtime="20210225 14:39:06.106"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.122" level="INFO">${x} = 941</msg>
+<status status="PASS" starttime="20210225 14:39:06.106" endtime="20210225 14:39:06.122"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.133" level="INFO">${y} = 2913</msg>
+<status status="PASS" starttime="20210225 14:39:06.122" endtime="20210225 14:39:06.133"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:39:06.134" level="INFO">Executing JavaScript:
+window.scrollTo(941, 2913)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:39:06.134" endtime="20210225 14:39:06.139"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.082" endtime="20210225 14:39:06.139"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.081" endtime="20210225 14:39:06.139"></status>
+</kw>
+<kw name="And Cek Berita Terpopuler Terdiri Dari 5 Artikel" library="Artikel">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns the number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex flex-col px-4 w-full lg:w-1/3")][contains(.,"Terpopuler")]//li[contains(@class,"flex items-center mb-2")]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.151" level="INFO">${count} = 5</msg>
+<status status="PASS" starttime="20210225 14:39:06.141" endtime="20210225 14:39:06.151"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${count} == 5</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:06.151" endtime="20210225 14:39:06.152"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.141" endtime="20210225 14:39:06.152"></status>
+</kw>
+<kw name="And Scroll Ke Artikel Terbaru" library="Artikel">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//span[contains(.,"Terbaru")]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:06.153" endtime="20210225 14:39:06.174"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.189" level="INFO">${x} = 941</msg>
+<status status="PASS" starttime="20210225 14:39:06.174" endtime="20210225 14:39:06.189"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.202" level="INFO">${y} = 3604</msg>
+<status status="PASS" starttime="20210225 14:39:06.189" endtime="20210225 14:39:06.202"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:39:06.203" level="INFO">Executing JavaScript:
+window.scrollTo(941, 3604)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:39:06.202" endtime="20210225 14:39:06.207"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.153" endtime="20210225 14:39:06.207"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.153" endtime="20210225 14:39:06.208"></status>
+</kw>
+<kw name="And Cek Berita Terbaru Terdiri Dari 5 Artikel" library="Artikel">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns the number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex flex-col px-4 w-full lg:w-1/3")][contains(.,"Terbaru")]//li[contains(@class,"flex flex-col items-start mb-3")]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.224" level="INFO">${count} = 5</msg>
+<status status="PASS" starttime="20210225 14:39:06.209" endtime="20210225 14:39:06.224"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${count} == 5</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:06.224" endtime="20210225 14:39:06.224"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.209" endtime="20210225 14:39:06.224"></status>
+</kw>
+<kw name="And Scroll Ke Artikel Lainnya" library="Artikel">
+<kw name="Scroll To Element" library="commonFunction">
+<arguments>
+<arg>xpath=//a[contains(.,"Lainnya dalam Opini")]</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:06.227" endtime="20210225 14:39:06.248"></status>
+</kw>
+<kw name="Get Horizontal Position" library="SeleniumLibrary">
+<doc>Returns the horizontal position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.263" level="INFO">${x} = 264</msg>
+<status status="PASS" starttime="20210225 14:39:06.248" endtime="20210225 14:39:06.263"></status>
+</kw>
+<kw name="Get Vertical Position" library="SeleniumLibrary">
+<doc>Returns the vertical position of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.272" level="INFO">${y} = 3599</msg>
+<status status="PASS" starttime="20210225 14:39:06.263" endtime="20210225 14:39:06.272"></status>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(${x}, ${y})</arg>
+</arguments>
+<msg timestamp="20210225 14:39:06.273" level="INFO">Executing JavaScript:
+window.scrollTo(264, 3599)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210225 14:39:06.273" endtime="20210225 14:39:06.279"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.226" endtime="20210225 14:39:06.279"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.225" endtime="20210225 14:39:06.281"></status>
+</kw>
+<kw name="And Cek Berita Lainnya Terdiri Dari 5 Artikel" library="Artikel">
+<kw name="Get Element Count" library="SeleniumLibrary">
+<doc>Returns the number of elements matching ``locator``.</doc>
+<arguments>
+<arg>xpath=//div[contains(@class,"flex flex-col px-4 w-full lg:w-2/3")][contains(.,"Lainnya")]//div[contains(@class, "flex mb-4")]</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.295" level="INFO">${count} = 6</msg>
+<status status="PASS" starttime="20210225 14:39:06.283" endtime="20210225 14:39:06.295"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>${count} - ${1}</arg>
+</arguments>
+<assign>
+<var>${count}</var>
+</assign>
+<msg timestamp="20210225 14:39:06.295" level="INFO">${count} = 5</msg>
+<status status="PASS" starttime="20210225 14:39:06.295" endtime="20210225 14:39:06.295"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${count} == 5</arg>
+</arguments>
+<status status="PASS" starttime="20210225 14:39:06.295" endtime="20210225 14:39:06.296"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.281" endtime="20210225 14:39:06.296"></status>
+</kw>
+<doc>Melakukan pengecekan berita terdiri dari 5 buah artikel
+Terkait, Terpopuler, Terbaru, Dan Artikel Lainnya</doc>
+<status status="PASS" starttime="20210225 14:39:05.647" endtime="20210225 14:39:06.296" critical="yes"></status>
+</test>
+<kw name="Stop Browser" library="commonFunction" type="teardown">
+<doc>close browser by url</doc>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20210225 14:39:06.299" endtime="20210225 14:39:08.797"></status>
+</kw>
+<status status="PASS" starttime="20210225 14:39:06.298" endtime="20210225 14:39:08.797"></status>
+</kw>
+<doc>Gherkin News Article</doc>
+<status status="FAIL" starttime="20210225 14:38:25.790" endtime="20210225 14:39:08.797"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="2">Critical Tests</stat>
+<stat pass="7" fail="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="7" fail="2" id="s1" name="NewsArticle">NewsArticle</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

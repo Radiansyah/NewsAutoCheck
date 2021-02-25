@@ -1,0 +1,12 @@
+httplib2==0.18.1
+jsonpath-ng==1.5.1
+jsonpointer==2.0
+jsonschema==3.2.0
+robotframework==3.2.1
+robotframework-lint==1.1
+robotframework-requests==0.7.0
+robotframework-selenium2library==3.0.0
+robotframework-seleniumlibrary==4.5.0
+robotframework-testrail==2.0.1
+selenium==3.141.0
+urllib3==1.25.10
