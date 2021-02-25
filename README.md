@@ -12,3 +12,6 @@ Download the repositories
 -New browser will open and run the automation and wait until browser closed it self and finished
 
 -Report.html & Log.xml will placed in Result folder
+
+# screenshot 
+![alt text](https://github.com/Radiansyah/NewsAutoCheck/blob/main/news.PNG?raw=true)
