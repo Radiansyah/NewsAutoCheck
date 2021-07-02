@@ -1,16 +1,6 @@
 *** Settings ***
 Documentation     Gherkin News Article
 Resource          ../Libraries/commonFunction.robot
-# Resource          Steps/LoginProcess.robot
-# Resource          Steps/AccountDetail.robot
-# Resource          Steps/ChooseFlight.robot
-# Resource          Steps/FlightSearchResult.robot
-# Resource          Steps/FlightPassenger.robot
-# Resource          Steps/PaymentMethod.robot
-# Resource          Steps/PaymentVerification.robot
-# Resource          Steps/MyorderVerification.robot
-# Resource          Steps/LogoutProcess.robot
-# Variables         ../Data/Flight.yaml
 Resource          Steps/Berlangganan.robot
 Resource          Steps/Teks.robot
 Resource          Steps/Facebook.robot
@@ -83,24 +73,6 @@ Berita Terdiri Dari 5 Buah Artikel Terkait, Terpopuler, Terbaru, Dan Artikel Lai
   And Scroll Ke Artikel Lainnya
   And Cek Berita Lainnya Terdiri Dari 5 Artikel
 
-
-
-
-# Create Flight Transaction
-#   [Documentation]       Testcase to do step by step to create transaction
-#   ...                   with options roundtrip plus domestic with 1 transit only
-#   ...                   and login with email registered and Virtual accout Payment method
-
-#   Given Wait Promo And Click Close
-#   And User Do Login
-#   And User Choose Flight Menu in Account Page
-#   And User Choose Flight Depart And Arrival
-#   And User Choose Flight Filter
-#   And User Fill Passenger Details
-#   When User Choose BCA Payment Method
-#   Then User Verify BCA Payment Method
-#   And User Verify My Order
-#   And User Do Logout
 
 
 
